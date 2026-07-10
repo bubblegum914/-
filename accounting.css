@@ -75,15 +75,6 @@ header h1 {
   letter-spacing: 1px;
 }
 
-.back-link {
-  text-decoration: none;
-  font-size: 13px;
-  color: #b89570;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.back-link:hover { color: #7a5c45; }
 
 /* ── Today Bar ── */
 .today-bar {
