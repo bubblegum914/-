@@ -19,6 +19,8 @@
       z-index: 0;
       pointer-events: none;
       animation: driftAround 30s ease-in-out infinite, wobble 4s ease-in-out infinite;
+      width: 140px;
+      height: 180px;
     }
     @keyframes driftAround {
       0%   { left: 75%; top: 75%; transform: rotate(0deg) scale(1); }
@@ -38,114 +40,10 @@
       25% { margin-top: -6px; }
       75% { margin-top: 4px; }
     }
-    .cat-head {
-      width: 88px; height: 78px;
-      background: #F5E6D3;
-      border-radius: 50%;
-      position: relative;
-      z-index: 1;
-    }
-    .cat-ear {
-      position: absolute;
-      width: 0; height: 0;
-      border-left: 13px solid transparent;
-      border-right: 13px solid transparent;
-      border-bottom: 22px solid #F5E6D3;
-      z-index: 0;
-    }
-    .cat-ear.l { top: -10px; left: 6px; transform: rotate(-10deg); }
-    .cat-ear.r { top: -10px; right: 6px; transform: rotate(10deg); }
-    .cat-ear::after {
-      content: '';
-      position: absolute;
-      top: 6px; left: -7px;
-      width: 0; height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 13px solid #F0CCC0;
-    }
-    .cat-eye {
-      position: absolute;
-      width: 13px; height: 15px;
-      background: #392309;
-      border-radius: 50%;
-      top: 28px;
-      z-index: 2;
-    }
-    .cat-eye.l { left: 20px; }
-    .cat-eye.r { right: 20px; }
-    .cat-eye::after {
-      content: '';
-      position: absolute;
-      width: 4px; height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      top: 3px; right: 3px;
-    }
-    .cat-nose {
-      position: absolute;
-      width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid #E8A0A0;
-      top: 42px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-    .cat-mouth {
-      position: absolute;
-      top: 49px; left: 50%;
-      transform: translateX(-50%);
-      font-size: 9px; color: #B09080;
-      z-index: 2;
-    }
-    .cat-cheek {
-      position: absolute;
-      width: 14px; height: 10px;
-      background: rgba(232,160,160,0.25);
-      border-radius: 50%;
-      top: 40px;
-      z-index: 1;
-    }
-    .cat-cheek.l { left: 6px; }
-    .cat-cheek.r { right: 6px; }
-
-    .helmet {
-      position: absolute;
-      top: -14px; left: -12px;
-      width: 112px; height: 106px;
-      border-radius: 50%;
-      border: 3px solid rgba(150, 210, 240, 0.5);
-      background: radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.25) 0%, transparent 55%);
-      box-shadow: inset 0 0 25px rgba(150, 210, 240, 0.1), 0 0 15px rgba(150, 210, 240, 0.08);
-      z-index: 3;
-    }
-    .helmet-ring {
-      position: absolute;
-      bottom: -3px; left: -10px; right: -10px;
-      height: 7px;
-      background: linear-gradient(90deg, #A0A0A0, #D0D0D0, #A0A0A0);
-      border-radius: 3px;
-      z-index: 4;
-    }
-    .helmet-shine {
-      position: absolute;
-      top: 14px; left: 20px;
-      width: 28px; height: 12px;
-      background: rgba(255,255,255,0.35);
-      border-radius: 50%;
-      transform: rotate(-35deg);
-      z-index: 5;
-    }
-
-    .cat-tail {
-      position: absolute;
-      bottom: -18px; right: -8px;
-      width: 40px; height: 12px;
-      background: #F0DCC8;
-      border-radius: 20px;
-      transform: rotate(20deg);
-      z-index: -1;
+    .space-cat svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .star {
@@ -173,21 +71,98 @@
   <div class="star" style="top:50%;left:10%;animation-delay:1.8s">✦</div>
 
   <div class="space-cat">
-    <div class="cat-head">
-      <div class="cat-ear l"></div>
-      <div class="cat-ear r"></div>
-      <div class="cat-eye l"></div>
-      <div class="cat-eye r"></div>
-      <div class="cat-nose"></div>
-      <div class="cat-mouth">ω</div>
-      <div class="cat-cheek l"></div>
-      <div class="cat-cheek r"></div>
-      <div class="helmet">
-        <div class="helmet-shine"></div>
-        <div class="helmet-ring"></div>
-      </div>
-      <div class="cat-tail"></div>
-    </div>
+    <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tail -->
+      <path d="M150 185 Q175 170 180 145 Q185 125 170 115 Q160 110 158 120 Q155 135 165 140 Q172 143 168 155 Q162 170 145 178" fill="#C4956A" stroke="#B08058" stroke-width="0.8"/>
+
+      <!-- Back body -->
+      <ellipse cx="95" cy="165" rx="50" ry="55" fill="#C4956A"/>
+
+      <!-- Belly -->
+      <ellipse cx="90" cy="175" rx="32" ry="40" fill="#E8D8C0"/>
+
+      <!-- Left back leg -->
+      <ellipse cx="58" cy="200" rx="16" ry="10" fill="#C4956A" transform="rotate(-15 58 200)"/>
+
+      <!-- Right back leg -->
+      <ellipse cx="132" cy="200" rx="16" ry="10" fill="#C4956A" transform="rotate(15 132 200)"/>
+
+      <!-- Left front paw -->
+      <ellipse cx="70" cy="208" rx="13" ry="10" fill="#C4956A"/>
+      <!-- Paw pad -->
+      <ellipse cx="70" cy="212" rx="6" ry="4" fill="#D4A8A0" opacity="0.5"/>
+
+      <!-- Right front paw -->
+      <ellipse cx="118" cy="208" rx="13" ry="10" fill="#C4956A"/>
+      <ellipse cx="118" cy="212" rx="6" ry="4" fill="#D4A8A0" opacity="0.5"/>
+
+      <!-- Chest fluff -->
+      <ellipse cx="90" cy="148" rx="22" ry="18" fill="#F0E4D4" opacity="0.6"/>
+
+      <!-- Head -->
+      <circle cx="95" cy="82" r="38" fill="#C4956A"/>
+
+      <!-- Left ear -->
+      <path d="M62 62 L50 30 L78 52 Z" fill="#C4956A" stroke="#B08058" stroke-width="0.5"/>
+      <path d="M64 58 L55 36 L75 52 Z" fill="#E8B8A0" opacity="0.7"/>
+
+      <!-- Right ear -->
+      <path d="M128 62 L140 30 L112 52 Z" fill="#C4956A" stroke="#B08058" stroke-width="0.5"/>
+      <path d="M126 58 L135 36 L115 52 Z" fill="#E8B8A0" opacity="0.7"/>
+
+      <!-- Face fur pattern -->
+      <path d="M75 70 Q95 65 115 70 Q105 90 95 95 Q85 90 75 70" fill="#D4AD80" opacity="0.3"/>
+
+      <!-- Left eye (almond shape) -->
+      <ellipse cx="78" cy="77" rx="9" ry="10" fill="#F0E8D8"/>
+      <ellipse cx="78" cy="77" rx="7" ry="8" fill="#6B9A4A"/>
+      <ellipse cx="78" cy="77" rx="4" ry="8" fill="#392309"/>
+      <circle cx="80" cy="73" r="3" fill="#fff" opacity="0.9"/>
+      <circle cx="76" cy="79" r="1.5" fill="#fff" opacity="0.4"/>
+
+      <!-- Right eye (almond shape) -->
+      <ellipse cx="112" cy="77" rx="9" ry="10" fill="#F0E8D8"/>
+      <ellipse cx="112" cy="77" rx="7" ry="8" fill="#6B9A4A"/>
+      <ellipse cx="112" cy="77" rx="4" ry="8" fill="#392309"/>
+      <circle cx="114" cy="73" r="3" fill="#fff" opacity="0.9"/>
+      <circle cx="110" cy="79" r="1.5" fill="#fff" opacity="0.4"/>
+
+      <!-- Eye outlines -->
+      <ellipse cx="78" cy="77" rx="9" ry="10" fill="none" stroke="#8A6848" stroke-width="0.8"/>
+      <ellipse cx="112" cy="77" rx="9" ry="10" fill="none" stroke="#8A6848" stroke-width="0.8"/>
+
+      <!-- Nose -->
+      <path d="M92 93 L95 90 L98 93 Z" fill="#E8A0A0"/>
+
+      <!-- Mouth -->
+      <path d="M90 96 Q92 100 95 98 Q98 100 100 96" fill="none" stroke="#A08070" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="95" y1="93" x2="95" y2="96" stroke="#A08070" stroke-width="1"/>
+
+      <!-- Whiskers left -->
+      <line x1="55" y1="84" x2="72" y2="90" stroke="#C0A890" stroke-width="0.8"/>
+      <line x1="52" y1="92" x2="72" y2="93" stroke="#C0A890" stroke-width="0.8"/>
+      <line x1="55" y1="100" x2="72" y2="96" stroke="#C0A890" stroke-width="0.8"/>
+
+      <!-- Whiskers right -->
+      <line x1="135" y1="84" x2="118" y2="90" stroke="#C0A890" stroke-width="0.8"/>
+      <line x1="138" y1="92" x2="118" y2="93" stroke="#C0A890" stroke-width="0.8"/>
+      <line x1="135" y1="100" x2="118" y2="96" stroke="#C0A890" stroke-width="0.8"/>
+
+      <!-- Cheek fluff -->
+      <ellipse cx="62" cy="94" rx="10" ry="6" fill="#D4AD80" opacity="0.3"/>
+      <ellipse cx="128" cy="94" rx="10" ry="6" fill="#D4AD80" opacity="0.3"/>
+
+      <!-- Helmet (glass dome) -->
+      <circle cx="95" cy="80" r="52" fill="rgba(180,220,240,0.06)" stroke="rgba(150,210,240,0.35)" stroke-width="2.5"/>
+
+      <!-- Helmet glass reflection -->
+      <ellipse cx="72" cy="58" rx="18" ry="9" fill="rgba(255,255,255,0.2)" transform="rotate(-30 72 58)"/>
+      <ellipse cx="68" cy="65" rx="8" ry="4" fill="rgba(255,255,255,0.15)" transform="rotate(-40 68 65)"/>
+
+      <!-- Helmet ring at base -->
+      <rect x="43" y="126" width="104" height="5" rx="2.5" fill="#A8A8A8"/>
+      <rect x="43" y="126" width="104" height="2" rx="1" fill="#D0D0D0" opacity="0.6"/>
+    </svg>
   </div>
 
   <div class="container">
