@@ -16,18 +16,27 @@
 
     .space-cat {
       position: fixed;
-      right: 24px;
-      bottom: 50px;
       z-index: 0;
-      animation: floatCat 7s ease-in-out infinite;
       pointer-events: none;
-      transform-origin: center;
+      animation: driftAround 30s ease-in-out infinite, wobble 4s ease-in-out infinite;
     }
-    @keyframes floatCat {
-      0%, 100% { transform: translateY(0) rotate(-4deg); }
-      25% { transform: translateY(-18px) rotate(3deg); }
-      50% { transform: translateY(-28px) rotate(-2deg); }
-      75% { transform: translateY(-12px) rotate(5deg); }
+    @keyframes driftAround {
+      0%   { left: 75%; top: 75%; transform: rotate(0deg) scale(1); }
+      10%  { left: 65%; top: 30%; transform: rotate(60deg) scale(0.97); }
+      20%  { left: 82%; top: 12%; transform: rotate(120deg) scale(1.03); }
+      30%  { left: 78%; top: 45%; transform: rotate(200deg) scale(0.98); }
+      40%  { left: 60%; top: 85%; transform: rotate(260deg) scale(1.02); }
+      50%  { left: 40%; top: 80%; transform: rotate(320deg) scale(0.96); }
+      60%  { left: 25%; top: 65%; transform: rotate(380deg) scale(1.04); }
+      70%  { left: 15%; top: 40%; transform: rotate(440deg) scale(0.97); }
+      80%  { left: 28%; top: 20%; transform: rotate(520deg) scale(1.02); }
+      90%  { left: 50%; top: 15%; transform: rotate(600deg) scale(0.98); }
+      100% { left: 75%; top: 75%; transform: rotate(720deg) scale(1); }
+    }
+    @keyframes wobble {
+      0%, 100% { margin-top: 0; }
+      25% { margin-top: -6px; }
+      75% { margin-top: 4px; }
     }
     .cat-head {
       width: 88px; height: 78px;
