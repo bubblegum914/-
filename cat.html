@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍀 記帳本 ✦ 太空貓</title>
+  <link rel="stylesheet" href="accounting.css">
+  <style>
+    body::before {
+      background-image:
+        radial-gradient(rgba(57,35,9,0.35) 2.5px, transparent 2.5px),
+        radial-gradient(rgba(57,35,9,0.2) 2.5px, transparent 2.5px);
+      background-size: 40px 40px, 40px 40px;
+      background-position: 0 0, 20px 20px;
+    }
+
+    .space-cat {
+      position: fixed;
+      right: 24px;
+      bottom: 50px;
+      z-index: 0;
+      animation: floatCat 7s ease-in-out infinite;
+      pointer-events: none;
+      transform-origin: center;
+    }
+    @keyframes floatCat {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      25% { transform: translateY(-18px) rotate(3deg); }
+      50% { transform: translateY(-28px) rotate(-2deg); }
+      75% { transform: translateY(-12px) rotate(5deg); }
+    }
+    .cat-head {
+      width: 88px; height: 78px;
+      background: #F5E6D3;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+    }
+    .cat-ear {
+      position: absolute;
+      width: 0; height: 0;
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom: 22px solid #F5E6D3;
+      z-index: 0;
+    }
+    .cat-ear.l { top: -10px; left: 6px; transform: rotate(-10deg); }
+    .cat-ear.r { top: -10px; right: 6px; transform: rotate(10deg); }
+    .cat-ear::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: -7px;
+      width: 0; height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 13px solid #F0CCC0;
+    }
+    .cat-eye {
+      position: absolute;
+      width: 13px; height: 15px;
+      background: #392309;
+      border-radius: 50%;
+      top: 28px;
+      z-index: 2;
+    }
+    .cat-eye.l { left: 20px; }
+    .cat-eye.r { right: 20px; }
+    .cat-eye::after {
+      content: '';
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      top: 3px; right: 3px;
+    }
+    .cat-nose {
+      position: absolute;
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #E8A0A0;
+      top: 42px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .cat-mouth {
+      position: absolute;
+      top: 49px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px; color: #B09080;
+      z-index: 2;
+    }
+    .cat-cheek {
+      position: absolute;
+      width: 14px; height: 10px;
+      background: rgba(232,160,160,0.25);
+      border-radius: 50%;
+      top: 40px;
+      z-index: 1;
+    }
+    .cat-cheek.l { left: 6px; }
+    .cat-cheek.r { right: 6px; }
+
+    .helmet {
+      position: absolute;
+      top: -14px; left: -12px;
+      width: 112px; height: 106px;
+      border-radius: 50%;
+      border: 3px solid rgba(150, 210, 240, 0.5);
+      background: radial-gradient(ellipse at 35% 30%, rgba(255,255,255,0.25) 0%, transparent 55%);
+      box-shadow: inset 0 0 25px rgba(150, 210, 240, 0.1), 0 0 15px rgba(150, 210, 240, 0.08);
+      z-index: 3;
+    }
+    .helmet-ring {
+      position: absolute;
+      bottom: -3px; left: -10px; right: -10px;
+      height: 7px;
+      background: linear-gradient(90deg, #A0A0A0, #D0D0D0, #A0A0A0);
+      border-radius: 3px;
+      z-index: 4;
+    }
+    .helmet-shine {
+      position: absolute;
+      top: 14px; left: 20px;
+      width: 28px; height: 12px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 50%;
+      transform: rotate(-35deg);
+      z-index: 5;
+    }
+
+    .cat-tail {
+      position: absolute;
+      bottom: -18px; right: -8px;
+      width: 40px; height: 12px;
+      background: #F0DCC8;
+      border-radius: 20px;
+      transform: rotate(20deg);
+      z-index: -1;
+    }
+
+    .star {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      font-size: 8px;
+      opacity: 0.25;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="star" style="top:8%;left:5%">✦</div>
+  <div class="star" style="top:15%;right:8%;animation-delay:0.5s">✦</div>
+  <div class="star" style="top:45%;left:3%;animation-delay:1s">✧</div>
+  <div class="star" style="top:60%;right:4%;animation-delay:1.5s">✦</div>
+  <div class="star" style="top:80%;left:7%;animation-delay:0.8s">✧</div>
+  <div class="star" style="top:30%;right:12%;animation-delay:2s">✦</div>
+  <div class="star" style="top:75%;right:15%;animation-delay:0.3s">✧</div>
+  <div class="star" style="top:50%;left:10%;animation-delay:1.8s">✦</div>
+
+  <div class="space-cat">
+    <div class="cat-head">
+      <div class="cat-ear l"></div>
+      <div class="cat-ear r"></div>
+      <div class="cat-eye l"></div>
+      <div class="cat-eye r"></div>
+      <div class="cat-nose"></div>
+      <div class="cat-mouth">ω</div>
+      <div class="cat-cheek l"></div>
+      <div class="cat-cheek r"></div>
+      <div class="helmet">
+        <div class="helmet-shine"></div>
+        <div class="helmet-ring"></div>
+      </div>
+      <div class="cat-tail"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>🧚🏻‍♀️ 記帳本 ✦ 太空貓</h1>
+      <div class="header-right">
+        <div class="user-area" id="userArea" style="display:none">
+          <span class="user-name" id="userName"></span>
+          <button class="logout-btn" id="logoutBtn">登出</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="today-bar">
+      <div class="today-item">
+        <span class="ti-icon">🎶</span>
+        <span class="ti-label">今日收入</span>
+        <span class="ti-value inc" id="todayInc">$0</span>
+      </div>
+      <div class="today-item">
+        <span class="ti-icon">🩰</span>
+        <span class="ti-label">今日支出</span>
+        <span class="ti-value exp" id="todayExp">$0</span>
+      </div>
+      <div class="today-item">
+        <span class="ti-icon">🐚</span>
+        <span class="ti-label">今日結餘</span>
+        <span class="ti-value bal" id="todayBal">$0</span>
+      </div>
+      <div class="today-item">
+        <span class="ti-icon">📝</span>
+        <span class="ti-label">今天記了幾筆</span>
+        <span class="ti-value" id="todayCount">0</span>
+      </div>
+    </div>
+
+    <div class="summary-row">
+      <div class="sum-card">
+        <span class="sum-icon">🍀</span>
+        <div>
+          <div class="sum-label">月收入</div>
+          <div class="sum-value inc" id="monthInc">$0</div>
+        </div>
+      </div>
+      <div class="sum-card">
+        <span class="sum-icon">🍡</span>
+        <div>
+          <div class="sum-label">月支出</div>
+          <div class="sum-value exp" id="monthExp">$0</div>
+        </div>
+      </div>
+      <div class="sum-card">
+        <span class="sum-icon">🫧</span>
+        <div>
+          <div class="sum-label">月結餘</div>
+          <div class="sum-value bal" id="monthBal">$0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals-row">
+      <div class="goal-card">
+        <div class="goal-hd">
+          <span>🎼 月度收入目標</span>
+          <span class="goal-nums">$<span id="gMonthlyEarned">0</span> / $<span id="gMonthlyTarget">0</span></span>
+        </div>
+        <div class="goal-track"><div class="goal-fill" id="gMonthlyFill"></div></div>
+        <div class="goal-ft">
+          <span id="gMonthlyPct">0%</span>
+          <span id="gMonthlyRemain">尚未設定目標</span>
+        </div>
+        <div class="goal-set">
+          <input type="number" id="gMonthlyInput" placeholder="月收入目標">
+          <button id="gMonthlyBtn">設定</button>
+        </div>
+      </div>
+      <div class="goal-card">
+        <div class="goal-hd">
+          <span>🍥 年度收入目標</span>
+          <span class="goal-nums">$<span id="gYearlyEarned">0</span> / $<span id="gYearlyTarget">0</span></span>
+        </div>
+        <div class="goal-track"><div class="goal-fill" id="gYearlyFill"></div></div>
+        <div class="goal-ft">
+          <span id="gYearlyPct">0%</span>
+          <span id="gYearlyRemain">尚未設定目標</span>
+        </div>
+        <div class="goal-set">
+          <input type="number" id="gYearlyInput" placeholder="年收入目標">
+          <button id="gYearlyBtn">設定</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="col">
+        <div class="section-card">
+          <h3>📊 本月分類</h3>
+          <div id="catStats"></div>
+        </div>
+        <div class="section-card">
+          <h3>🎶 今日記錄</h3>
+          <div id="todayEntries"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="section-card">
+          <h3>📝 所有記錄</h3>
+          <div class="rec-controls">
+            <select id="recMonth"></select>
+            <select id="recType">
+              <option value="all">全部</option>
+              <option value="income">🍀 收入</option>
+              <option value="expense">🍡 支出</option>
+            </select>
+            <input type="text" id="recSearch" placeholder="🔍 搜尋">
+          </div>
+          <div id="recList"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="fab" id="fabAdd">➕</button>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-inner">
+      <div class="modal-hd">
+        <h3 id="modalTitle">📝 新增記錄</h3>
+        <button class="modal-x" id="modalClose">✕</button>
+      </div>
+      <form id="modalForm">
+        <div class="field">
+          <label>類型</label>
+          <div class="toggle">
+            <button type="button" class="tg-btn active" data-type="income">🍀 收入</button>
+            <button type="button" class="tg-btn" data-type="expense">🍡 支出</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>📅 日期</label>
+          <input type="date" id="fDate" required>
+        </div>
+        <div class="field">
+          <label>📂 類別</label>
+          <select id="fCat" required></select>
+        </div>
+        <div class="field">
+          <label>💵 金額</label>
+          <div class="amt-input-wrap">
+            <button type="button" class="amt-btn amt-minus" id="amtMinus">−100</button>
+            <input type="number" id="fAmount" placeholder="0" min="0" step="1" required>
+            <button type="button" class="amt-btn amt-plus" id="amtPlus">+100</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>💬 備註</label>
+          <input type="text" id="fNote" placeholder="選擇性備註">
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary" id="fSubmit">💾 儲存</button>
+          <button type="button" class="btn-secondary" id="fCancel">↩ 取消</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <h2>🍀 記帳本</h2>
+      <p>輸入你的名字開始記帳</p>
+      <form id="loginForm" style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <input type="text" id="loginName" placeholder="你的名字" style="width:200px;padding:10px 14px;border:2px solid #98d0b0;border-radius:10px;font-size:15px;text-align:center;outline:none;background:rgba(255,255,255,0.8);color:#392309;font-family:inherit">
+        <button type="submit" style="padding:10px 30px;border:none;border-radius:10px;background:#98d0b0;color:#392309;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit">🧚🏻‍♀️ 開始記帳</button>
+      </form>
+      <p class="login-note">不同名字擁有各自的記帳資料</p>
+    </div>
+  </div>
+
+  <script src="accounting.js"></script>
+</body>
+</html>
